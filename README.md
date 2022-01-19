@@ -87,27 +87,27 @@ The amount of information included can be managed by setting the verbosity, whic
 
 #### Verbosity
 
-SDS read APIs supports an accept-verbosity header that will set whether verbose output should be excluded. A value is considered verbose if it is the default value for its type, such as false for a boolean, None for a string, etc. The following example output demonstrates responses for the same call using verbose and non-verbose values:
+SDS read APIs supports an accept-verbosity header that will set whether verbose output should be excluded. A value is considered verbose if it is the default value for its type, such as false for a boolean, null for a string, etc. The following example output demonstrates responses for the same call using verbose and non-verbose values:
 
 accept-verbosity = verbose
 ```json
 {
-  'Timestamp': '2021-12-15T01:39:05Z',
-  'Value': 98.30506,
-  'IsQuestionable': False,
-  'IsSubstituted': True,
-  'IsAnnotated': False,
-  'SystemStateCode': None,
-  'DigitalStateName': None
+  "Timestamp": "2021-12-15T01:39:05Z",
+  "Value": 98.30506,
+  "IsQuestionable": false,
+  "IsSubstituted": true,
+  "IsAnnotated": false,
+  "SystemStateCode": null,
+  "DigitalStateName": null
 }
 ```
 
 accept-verbosity = non-verbose
 ```json
 {
-  'Timestamp': '2021-12-15T01:39:05Z',
-  'Value': 98.30506,
-  'IsSubstituted': True,
+  "Timestamp": "2021-12-15T01:39:05Z",
+  "Value": 98.30506,
+  "IsSubstituted": true,
 }
 ```
 
