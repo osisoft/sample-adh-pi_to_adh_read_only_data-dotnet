@@ -43,7 +43,8 @@ The SDS Service is secured here by obtaining authentication tokens using credent
   "TenantId": "PLACEHOLDER_REPLACE_WITH_TENANT_ID",
   "Resource": "https://dat-b.osisoft.com",
   "ClientId": "PLACEHOLDER_REPLACE_WITH_CLIENT_IDENTIFIER",
-  "ClientSecret": "PLACEHOLDER_REPLACE_WITH_CLIENT_SECRET"
+  "ClientSecret": "PLACEHOLDER_REPLACE_WITH_CLIENT_SECRET",
+  "StreamId": "PLACEHOLDER_REPLACE_WITH_STREAM_ID"
 }
 ```
 
@@ -54,7 +55,7 @@ The AuthenticationHandler is a DelegatingHandler that is attached to an HttpClie
 
 The client example works through three client interfaces:
 
-- ISdsMetadataService for SdsStream, SdsType, SdsStreamView metadata operations
+- ISdsMetadataService for SdsStream operations
 - ISdsDataService for reading and writing data
 - ISdsTableService for reading data in table format
 
@@ -169,7 +170,7 @@ SDS can retrieve interpolated values where data does not explicitly exist. In th
 IEnumerable<PItoOCSType> interpolatedValues = await dataService.GetValuesAsync<PItoOCSType>(streamId, startIndex, endIndex, 10)
 ```
 
-When retreiving events you can also filter on what is being returned, so you only get the events you are interested in.
+When retreiving events you can also filter on what is being returned, so that you only get the events you are interested in.
 
 ```C#
 IEnumerable<PItoOCSType> filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoOCSType>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 89")
