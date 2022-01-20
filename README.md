@@ -15,6 +15,8 @@ Developed against DotNet 5.0.
 
 ## Getting Started
 
+`Note: This sample requires an Id of a PI to OCS stream already created in SDS.`
+
 In this example we assume that you have the dotnet core CLI.
 
 To run this example from the commandline run
