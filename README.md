@@ -35,7 +35,7 @@ dotnet test
 
 The sample is configured using the file [appsettings.placeholder.json](SdsClientLibraries/appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
 
-The SDS Service is secured by obtaining tokens from Azure Active Directory. Such clients provide a client Id and an associated secret (or key) that are authenticated against the directory. You must replace the placeholders in your `appsettings.json` file with the authentication-related values you received from OSIsoft.
+The SDS Service is secured here by obtaining authentication tokens using credential clients. Such clients provide a client Id and an associated secret (or key) that are authenticated against OCS. You must replace the placeholders in your `appsettings.json` file with the authentication-related values you received from OSIsoft.
 
 ```json
 {
@@ -63,12 +63,13 @@ To enable GZip compression, this sample specifies `HttpCompressionMethod.Gzip` i
 
 ## PI Tag Name to OCS Stream Id
 
-Streams in SDS are referred to by their Id rather than by their name as is common with PI tags. To find the PI to OCS stream corresponding to your PI tag name in SDS, you can search in the portal using the following format:
+Streams in SDS are referred to by their Id rather than by their name as is common with PI tags. To find the PI to OCS stream corresponding to your PI tag name in SDS, you can search in the SDS portal using the following format:
 
 ID:PI_<YOUR_SERVER_NAME>_* AND Name:<PI_TAG_NAME>
 
-The SDS portal can found by navigating to the [Cloud Portal](http://cloud.osisoft.com) and visiting the *Sequential Data Store* option under the *Data Management* tab on the left hand menu, where you can find the search bar in the top center.
+The SDS portal can be found by navigating to the [Cloud Portal](http://cloud.osisoft.com) and visiting the *Sequential Data Store* option under the *Data Management* tab on the left hand menu, where you can find the search bar in the top center.
 
+To do this programatically you can use the `GetStreamsAsync` method, for more information see the [Retrieve Streams by Query](#retreive-streams-by-query) section below.
 
 ## PI to OCS Stream properties
 
@@ -143,23 +144,21 @@ IEnumerable<SdsStream> streams = await metadataService.GetStreamsAsync(query, sk
 
 ## Retrieve Values from a Stream
 
-The SDS REST API features different methods of reading values, in this sample we will demonstrate reading Window, Range, and Filtered values, as well as using Interpolation.
-
 There are many methods in the SDS REST API allowing for the retrieval of events from a stream, in this sample we will demonstrate reading Window, Range, and Filtered events, as well as using Interpolation.
 
-The following is an example of getting Window events, where the start and end indices in the case of PI to OCS streams are datetime objects expressed as strings
+The following is an example of getting Window events, where the start and end indices are datetime objects expressed as strings
 ```C#
 IEnumerable<PItoOCSType> retrieved =
   await client.GetWindowValuesAsync<PItoOCSType>(stream.Id, startIndex, endIndex);
 ```
 
-SDS can retrieve the values in the form of a table (in this case with headers)
+SDS can also retrieve the values in the form of a table
 
 ```C#
 SdsTable tableEvents = await tableService.GetWindowValuesAsync(stream.Id, startIndex, endIndex);
 ```
 
-We can also retrieve Range events, where we provide a start index and a count to get that amount of values counting from the provided start index 
+To get Range events we provide a start index and a count to get that amount of values counting from the provided start index 
 ```C#
 IEnumerable<PItoOCSType> rangeValues = await dataService.GetRangeValuesAsync<PItoOCSType>(streamId, startIndex, 10)
 ```
@@ -186,4 +185,4 @@ Automated test uses DotNet 5.0
 
 For the main PI to OCS read only stream samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/PI_TO_OCS_READ_DATA.md)  
 For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)
-For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)s
+For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
