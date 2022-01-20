@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-    <PackageReference Include="OSIsoft.OCSClients" Version="4.0.3-prerelease-20210707.1" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="OSIsoft.OCSClients" Version="4.0.5-prerelease-20211025.1" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.376">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

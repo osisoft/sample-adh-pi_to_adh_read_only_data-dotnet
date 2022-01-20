@@ -59,8 +59,8 @@ namespace PItoOCSReadOnly
 
             try
             {
-                string startIndex = (DateTime.UtcNow - TimeSpan.FromDays(50)).ToString(CultureInfo.InvariantCulture);
-                string endIndex = (DateTime.UtcNow - TimeSpan.FromDays(49)).ToString(CultureInfo.InvariantCulture); // DateTime.UtcNow.ToString(CultureInfo.InvariantCulture);
+                string startIndex = (DateTime.UtcNow - TimeSpan.FromDays(1)).ToString(CultureInfo.InvariantCulture);
+                string endIndex = DateTime.UtcNow.ToString(CultureInfo.InvariantCulture);
 
                 // Step 2 Get Stream
                 Console.WriteLine("Getting PI to OCS stream");
