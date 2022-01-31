@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PItoOCSReadOnly", "PItoOCSReadOnly\PItoOCSReadOnly.csproj", "{B9860641-DC6D-446D-B219-2B0B573C3937}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{201C675B-D6B8-4FE3-B798-0E805F31A4D3}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -16,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PItoOCSReadOnlyTests", "PItoOCSReadOnlyTests\PItoOCSReadOnlyTests.csproj", "{5326DC19-16F4-4509-BA68-AA7B8D3B0242}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PItoADHReadOnly", "PItoADHReadOnly\PItoADHReadOnly.csproj", "{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PItoADHReadOnlyTests", "PItoADHReadOnlyTests\PItoADHReadOnlyTests.csproj", "{5FA6A671-AF22-4192-8384-66A80E4F4295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B9860641-DC6D-446D-B219-2B0B573C3937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9860641-DC6D-446D-B219-2B0B573C3937}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9860641-DC6D-446D-B219-2B0B573C3937}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9860641-DC6D-446D-B219-2B0B573C3937}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5326DC19-16F4-4509-BA68-AA7B8D3B0242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5326DC19-16F4-4509-BA68-AA7B8D3B0242}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5326DC19-16F4-4509-BA68-AA7B8D3B0242}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5326DC19-16F4-4509-BA68-AA7B8D3B0242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

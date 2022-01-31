@@ -2,9 +2,9 @@
 using System.Text;
 using OSIsoft.Data;
 
-namespace PItoOCSReadOnly
+namespace PItoADHReadOnly
 {
-    public class PItoOCSType
+    public class PItoADHFloatType
     {
         [SdsMember(IsKey = true)]
         public DateTime Timestamp { get; set; }

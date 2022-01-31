@@ -32,7 +32,7 @@ variables:
 jobs:
   - job: Tests
     strategy:
-      maxParallel: 1 # Avoid conflicts in OCS
+      maxParallel: 1 # Avoid conflicts in ADH
       matrix:
         linux:
           agentOS: Linux
@@ -44,7 +44,7 @@ jobs:
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret, StreamId'
+          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret, StreamId, Resource'
 
       - task: DotNetCoreCLI@2
         displayName: 'Nuget restore'

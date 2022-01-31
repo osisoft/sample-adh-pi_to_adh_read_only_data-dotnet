@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PItoOCSReadOnly
+namespace PItoADHReadOnly
 {
     public class VerbosityHeaderHandler : DelegatingHandler
     {
@@ -15,7 +15,7 @@ namespace PItoOCSReadOnly
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            // If the handler is set to non-verbose, set the accept-verbosity header to non-verbose to prevent null values from being returned from OCS
+            // If the handler is set to non-verbose, set the accept-verbosity header to non-verbose to prevent null values from being returned from ADH
             if (!Verbose)
             {
                 request?.Headers.Add("accept-verbosity", "non-verbose");

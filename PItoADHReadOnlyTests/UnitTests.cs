@@ -1,13 +1,13 @@
 using Xunit;
 
-namespace PItoOCSReadOnlyTests
+namespace PItoADHReadOnlyTests
 {
     public class UnitTests
     {
         [Fact]
         public void TestMain()
         {
-            Assert.True(PItoOCSReadOnly.Program.MainAsync(true).Result);
+            Assert.True(PItoADHReadOnly.Program.MainAsync(true).Result);
         }
     }
 }
