@@ -35,8 +35,7 @@ namespace PItoADHReadOnly
             var streamId = _configuration["StreamId"];
             var uriResource = new Uri(resource);
 
-            // Step 1
-            // Get Sds Services to communicate with server
+            // Step 1 Get SDS Services to make requests
             AuthenticationHandler authenticationHandler = new AuthenticationHandler(uriResource, clientId, clientSecret);
             VerbosityHeaderHandler verbosityHeaderHandler = new VerbosityHeaderHandler();
             SdsService sdsService = new SdsService(uriResource, null, HttpCompressionMethod.GZip, authenticationHandler, verbosityHeaderHandler);
@@ -128,10 +127,10 @@ namespace PItoADHReadOnly
                     avgValue = valuesOnly.Sum() / valuesOnly.Count();
                 }
 
-                Console.WriteLine($"To show the filter functionality, we will use the less than operator. Based on the data that we have received, {avgValue} is the average value, we will use this as a threshold.");
-                Console.WriteLine($"Getting filtered events for values less than {avgValue}:");
+                Console.WriteLine($"To show the filter functionality, we will use the less than operator to show values less than 0. (You can replace the value in the filter statements below to update this)");
+                Console.WriteLine($"Getting filtered events for values less than 0:");
 
-                var filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt {avgValue}").ConfigureAwait(false);
+                var filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {filteredValues.Count()}");
                 foreach (var value in filteredValues)
                 {
