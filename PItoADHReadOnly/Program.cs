@@ -9,7 +9,8 @@ using OSIsoft.Data.Http;
 using OSIsoft.Identity;
 
 namespace PItoADHReadOnly
-{    public static class Program
+{
+    public static class Program
     {
         private static IConfiguration _configuration;
 
