@@ -57,28 +57,16 @@ namespace PItoADHReadOnly
 
             try
             {
-                string startIndex = (DateTime.UtcNow - TimeSpan.FromDays(1)).ToString(CultureInfo.InvariantCulture);
-                string endIndex = DateTime.UtcNow.ToString(CultureInfo.InvariantCulture);
+                // Get time indices for the last day
+                var currentTime = DateTime.UtcNow;
+                var startIndex = (currentTime - TimeSpan.FromDays(1)).ToString(CultureInfo.InvariantCulture);
+                var endIndex = currentTime.ToString(CultureInfo.InvariantCulture);
 
                 Console.WriteLine("Step 2. Retrieve stream");
-                Console.WriteLine("Getting PI to ADH stream");
                 var stream = await metadataService.GetStreamAsync(streamId).ConfigureAwait(false);
                 Console.WriteLine($"Found stream: {stream.Id}");
 
-                Console.WriteLine("Step 3. Show verbosity");
-                Console.WriteLine("Let\'s first use accept-verbose as True to see the PI point property columns included:");
-                Console.WriteLine("Getting latest event of the stream, note how we can see the PI to ADH metadata included:");
-                var last = await dataService.GetLastValueAsync<PItoADHFloatType>(streamId).ConfigureAwait(false);
-                Console.WriteLine(last);
-
-                Console.WriteLine("Now let\'s use accept-verbosity as False to see the difference:");
-                verbosityHeaderHandler.Verbose = false;
-                last = await dataService.GetLastValueAsync<PItoADHFloatType>(streamId).ConfigureAwait(false);
-                Console.WriteLine(last.ToString());
-
-                Console.WriteLine("Step 4. Retrieve Window events");
-                verbosityHeaderHandler.Verbose = true;
-                Console.WriteLine("Getting window events with verbosity accepted:");
+                Console.WriteLine("Step 3. Retrieve Window events");
                 var windowEvents = await dataService.GetWindowValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {windowEvents.Count()}");
                 foreach (var value in windowEvents)
@@ -86,25 +74,14 @@ namespace PItoADHReadOnly
                     Console.WriteLine(value.ToString());
                 }
 
-                verbosityHeaderHandler.Verbose = false;
-                Console.WriteLine("Getting window events with verbosity not accepted:");
-                windowEvents = await dataService.GetWindowValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex).ConfigureAwait(false);
-                Console.WriteLine($"Total events found: {windowEvents.Count()}");
-                foreach (var value in windowEvents)
-                {
-                    Console.WriteLine(value.ToString());
-                }
-
-                Console.WriteLine("Step 5. Retrieve Window events in table form");
-                Console.WriteLine("Getting window events as a table with headers:");
+                Console.WriteLine("Step 4. Retrieve Window events in table form");
                 var windowEventsTable = await tableService.GetWindowValuesAsync(streamId, startIndex, endIndex).ConfigureAwait(false);
                 foreach (var value in windowEventsTable.Rows)
                 {
                     Console.WriteLine(string.Join(",", value.ToArray()));
                 }
 
-                Console.WriteLine("Step 6. Retrieve Range events");
-                Console.WriteLine("Getting range events with verbosity accepted:");
+                Console.WriteLine("Step 5. Retrieve Range events");
                 var rangeValues = await dataService.GetRangeValuesAsync<PItoADHFloatType>(streamId, startIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {rangeValues.Count()}");
                 foreach (var value in rangeValues)
@@ -112,7 +89,7 @@ namespace PItoADHReadOnly
                     Console.WriteLine(value.ToString());
                 }
 
-                Console.WriteLine("Step 7. Retrieve Interpolated events");
+                Console.WriteLine("Step 6. Retrieve Interpolated events");
                 Console.WriteLine("Sds can interpolate or extrapolate data at an index location where data does not explicitly exist:");
                 var interpolatedValues = await dataService.GetValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {interpolatedValues.Count()}");
@@ -121,10 +98,8 @@ namespace PItoADHReadOnly
                     Console.WriteLine(value.ToString());
                 }
 
-                Console.WriteLine("Step 8. Retrieve Filtered events");
-                Console.WriteLine($"To show the filter functionality, we will use the less than operator to show values less than 0. (You can replace the value in the filter statements below to update this)");
-                Console.WriteLine($"Getting filtered events for values less than 0");
-
+                Console.WriteLine("Step 7. Retrieve Filtered events");
+                Console.WriteLine($"To show the filter functionality, we will use the less than operator to show values less than 0. (This value can be replaced in the filter statement below to better fit the data set)");
                 var filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {filteredValues.Count()}");
                 foreach (var value in filteredValues)
@@ -140,10 +115,6 @@ namespace PItoADHReadOnly
             finally
             {
                 Console.WriteLine("Complete!");
-                if (!test)
-                {
-                    Console.ReadKey();
-                }
             }
 
             if (test && _toThrow != null)

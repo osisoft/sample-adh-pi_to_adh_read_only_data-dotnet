@@ -9,29 +9,38 @@ namespace PItoADHReadOnly
         [SdsMember(IsKey = true)]
         public DateTime Timestamp { get; set; }
 
-        public float Value { get; set; }
+        public float? Value { get; set; }
 
-        public bool? IsQuestionable { get; set; }
+        public bool IsQuestionable { get; set; }
 
-        public bool? IsSubstituted { get; set; }
+        public bool IsSubstituted { get; set; }
 
-        public bool? IsAnnotated { get; set; }
+        public bool IsAnnotated { get; set; }
 
         public int? SystemStateCode { get; set; }
 
-        public int? DigitalStateName { get; set; }
+        public string DigitalStateName { get; set; }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append($", Timestamp: {Timestamp}");
-            sb.Append($", Value: {Value}");
 
-            if (IsQuestionable != null) { sb.Append($", IsQuestionable: {IsQuestionable}"); }
-            if (IsSubstituted != null) { sb.Append($", IsSubstituted: {IsSubstituted}"); }
-            if (IsAnnotated != null) { sb.Append($", IsAnnotated: {IsAnnotated}"); }
-            if (SystemStateCode != null) { sb.Append($", SystemStateCode: {SystemStateCode}"); }
-            if (DigitalStateName != null) { sb.Append($", DigitalStateName: {DigitalStateName}"); }
+            sb.Append($"Timestamp: {Timestamp}, ");
+
+            if (Value is not null)
+            {
+                sb.Append($"Value: {Value}, ");
+            }
+
+            sb.Append($"IsQuestionable: {IsQuestionable}, ");
+            sb.Append($"IsSubstituted: {IsSubstituted}, ");
+            sb.Append($"IsAnnotated: {IsAnnotated}, ");
+
+            if (SystemStateCode is not null)
+            {
+                sb.Append($"SystemStateCode: {SystemStateCode}");
+                sb.Append($"DigitalStateName: {DigitalStateName}");
+            }
 
             return sb.ToString();
         }
