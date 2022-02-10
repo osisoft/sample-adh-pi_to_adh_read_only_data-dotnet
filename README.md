@@ -22,14 +22,14 @@ Developed against DotNet 5.0.
 
 In this example we assume that you have the dotnet core CLI.
 
-To run this example from the commandline run
+To run this example from the commandline, change directories to PItoADHReadOnly and run
 
 ```shell
 dotnet restore
 dotnet run
 ```
 
-to test this program change directories to the test and run
+to test this program change directories to PItoADHReadOnlyTests and run
 
 ```shell
 dotnet restore
