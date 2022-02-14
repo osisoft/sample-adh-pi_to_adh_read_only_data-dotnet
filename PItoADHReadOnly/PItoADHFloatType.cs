@@ -36,7 +36,7 @@ namespace PItoADHReadOnly
             sb.Append($"IsSubstituted: {IsSubstituted}, ");
             sb.Append($"IsAnnotated: {IsAnnotated}, ");
 
-            // In case Value is null, the event will specify a SystemStateCode 
+            // In case Value is null, the event will specify a SystemStateCode
             // integer with DigitalStateName as its string representation
             if (SystemStateCode is not null)
             {
