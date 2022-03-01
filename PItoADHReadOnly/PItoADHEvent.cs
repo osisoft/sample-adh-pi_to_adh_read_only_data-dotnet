@@ -4,7 +4,7 @@ using OSIsoft.Data;
 
 namespace PItoADHReadOnly
 {
-    public class PItoADHFloatType
+    public class PItoADHEvent
     {
         [SdsMember(IsKey = true)]
         public DateTime Timestamp { get; set; }
@@ -34,13 +34,13 @@ namespace PItoADHReadOnly
 
             sb.Append($"IsQuestionable: {IsQuestionable}, ");
             sb.Append($"IsSubstituted: {IsSubstituted}, ");
-            sb.Append($"IsAnnotated: {IsAnnotated}, ");
+            sb.Append($"IsAnnotated: {IsAnnotated}");
 
             // In case Value is null, the event will specify a SystemStateCode
             // integer with DigitalStateName as its string representation
             if (SystemStateCode is not null)
             {
-                sb.Append($"SystemStateCode: {SystemStateCode}");
+                sb.Append($", SystemStateCode: {SystemStateCode}, ");
                 sb.Append($"DigitalStateName: {DigitalStateName}");
             }
 

@@ -14,3 +14,4 @@ dotnet_diagnostic.CA1303.severity=silent
 dotnet_diagnostic.SA1501.severity=silent
 dotnet_diagnostic.CA1014.severity=silent
 dotnet_diagnostic.SA0001.severity=silent
+dotnet_diagnostic.CA5394.severity=silent

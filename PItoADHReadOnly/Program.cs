@@ -67,7 +67,7 @@ namespace PItoADHReadOnly
                 Console.WriteLine($"Found stream: {stream.Id}");
 
                 Console.WriteLine("Step 3. Retrieve Window events");
-                var windowEvents = await dataService.GetWindowValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex).ConfigureAwait(false);
+                var windowEvents = await dataService.GetWindowValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {windowEvents.Count()}");
                 foreach (var value in windowEvents)
                 {
@@ -82,7 +82,7 @@ namespace PItoADHReadOnly
                 }
 
                 Console.WriteLine("Step 5. Retrieve Range events");
-                var rangeValues = await dataService.GetRangeValuesAsync<PItoADHFloatType>(streamId, startIndex, 10).ConfigureAwait(false);
+                var rangeValues = await dataService.GetRangeValuesAsync<PItoADHEvent>(streamId, startIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {rangeValues.Count()}");
                 foreach (var value in rangeValues)
                 {
@@ -91,7 +91,7 @@ namespace PItoADHReadOnly
 
                 Console.WriteLine("Step 6. Retrieve Interpolated events");
                 Console.WriteLine("Sds can interpolate or extrapolate data at an index location where data does not explicitly exist:");
-                var interpolatedValues = await dataService.GetValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, 10).ConfigureAwait(false);
+                var interpolatedValues = await dataService.GetValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {interpolatedValues.Count()}");
                 foreach (var value in interpolatedValues)
                 {
@@ -100,7 +100,7 @@ namespace PItoADHReadOnly
 
                 Console.WriteLine("Step 7. Retrieve Filtered events");
                 Console.WriteLine($"To show the filter functionality, we will use the less than operator to show values less than 0. (This value can be replaced in the filter statement below to better fit the data set)");
-                var filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
+                var filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {filteredValues.Count()}");
                 foreach (var value in filteredValues)
                 {
