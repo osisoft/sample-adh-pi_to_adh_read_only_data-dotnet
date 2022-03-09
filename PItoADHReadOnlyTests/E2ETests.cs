@@ -40,7 +40,6 @@ namespace PItoADHReadOnlyTests
 
         private static void ReadAppSettings()
         {
-            Console.WriteLine("Step 1. Authenticate against OCS");
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
