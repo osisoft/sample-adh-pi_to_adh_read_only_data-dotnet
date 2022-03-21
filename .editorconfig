@@ -1,17 +1,25 @@
 [*]
 quote_type = single
-dotnet_diagnostic.SA1600.severity=silent
-dotnet_diagnostic.SA1309.severity=silent
-dotnet_diagnostic.SX1309.severity=error
-dotnet_diagnostic.SX1309S.severity=error
-dotnet_diagnostic.SA1200.severity=none
 
-# SA1101: Prefix local calls with this
-dotnet_diagnostic.SA1101.severity = none
+# Elements Must Be Documented
+dotnet_diagnostic.SA1600.severity=silent
+# Field Names Must Not Begin With Underscore
+dotnet_diagnostic.SA1309.severity=silent
+# Using Directives Must Be Placed Correctly
+dotnet_diagnostic.SA1200.severity=none
+# Prefix local calls with this
+dotnet_diagnostic.SA1101.severity=none
+# File Must Have Header
 dotnet_diagnostic.SA1633.severity=silent
+# Do not catch general exception types
 dotnet_diagnostic.CA1031.severity=silent
+# Do not pass literals as localized parameters
 dotnet_diagnostic.CA1303.severity=silent
+# Statement Must Not Be On Single Line
 dotnet_diagnostic.SA1501.severity=silent
+# Mark assemblies with CLSCompliantAttribute
 dotnet_diagnostic.CA1014.severity=silent
+# Xml Comment Analysis Disabled
 dotnet_diagnostic.SA0001.severity=silent
+# Do not use insecure randomness
 dotnet_diagnostic.CA5394.severity=silent
