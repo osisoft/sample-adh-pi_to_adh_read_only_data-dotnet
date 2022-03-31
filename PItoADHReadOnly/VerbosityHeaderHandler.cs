@@ -15,14 +15,14 @@ namespace PItoADHReadOnly
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            // If the handler is set to non-verbose, set the accept-verbosity header to non-verbose to prevent null values from being returned from ADH
-            if (!Verbose)
+            // If the handler is set to non-verbose, set the accept-verbosity header to non-verbose to prevent verbose values from being returned from ADH
+            if (Verbose)
             {
-                request?.Headers.Add("accept-verbosity", "non-verbose");
+                request?.Headers.Add("accept-verbosity", "verbose");
             }
             else
             {
-                request?.Headers.Add("accept-verbosity", "verbose");
+                request?.Headers.Add("accept-verbosity", "non-verbose");
             }
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);

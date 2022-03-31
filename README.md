@@ -91,6 +91,7 @@ When ingressing data using PI to ADH, the resulting stream types contain a certa
 
 The amount of information included can be managed by setting the verbosity, which we will show in more detail below.
 
+These stream types are created automatically by the PI to ADH transfer, but are regular SDS types at their core. API calls used in this sample also apply to user defined SDS types, for examples using user defined types see the [SDS Waveform samples](https://github.com/osisoft/OSI-Samples-ADH/blob/main/docs/SDS_WAVEFORM.md).
 
 #### Verbosity
 
@@ -169,7 +170,7 @@ To get Range events we provide a start index and a count to get that amount of v
 IEnumerable<PItoADHFloatType> rangeValues = await dataService.GetRangeValuesAsync<PItoADHFloatType>(streamId, startIndex, 10)
 ```
 
-SDS can retrieve interpolated values where data does not explicitly exist. In this case we are asking for 10 events between the two indices. Suppose that if we only have 5 values stored between these indices, the other 5 values will be interpolated for.
+SDS can retrieve interpolated values where data does not explicitly exist. In this case we are asking for 10 events between the two indices. Suppose that if we only have 5 values stored between these indices, the other 5 values will be interpolated.
 
 ```C#
 IEnumerable<PItoADHFloatType> interpolatedValues = await dataService.GetValuesAsync<PItoADHFloatType>(streamId, startIndex, endIndex, 10)
@@ -183,7 +184,7 @@ IEnumerable<PItoADHFloatType> filteredValues = await dataService.GetWindowFilter
 
 ## Additional Methods
 
-Note that there are more methods provided in the SdsClient than are discussed in this document, for a complete list of HTTP request URLs refer to the [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html).
+Note that there are more methods provided in the SdsClient than are discussed in this document, for a complete list of HTTP request URLs refer to the [SDS documentation](https://docs.osisoft.com/bundle/data-hub/page/developer-guide/sequential-data-store-dev/sds-lp-dev.html).
 
 ---
 
