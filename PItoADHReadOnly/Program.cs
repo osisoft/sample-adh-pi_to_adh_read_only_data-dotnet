@@ -61,8 +61,8 @@ namespace PItoADHReadOnly
                 var currentTime = DateTime.UtcNow;
 
                 // Format indices with "O" to use ISO 8601 standard timestamps
-                var startIndex = (currentTime - TimeSpan.FromDays(1)).ToString("O", CultureInfo.InvariantCulture);
-                var endIndex = currentTime.ToString("O", CultureInfo.InvariantCulture);
+                var startIndex = (currentTime - TimeSpan.FromDays(1)).ToString("O");
+                var endIndex = currentTime.ToString("O");
 
                 Console.WriteLine("Step 2. Retrieve stream");
                 var stream = await metadataService.GetStreamAsync(streamId).ConfigureAwait(false);
