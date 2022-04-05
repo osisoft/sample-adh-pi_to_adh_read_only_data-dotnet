@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{201C675B-D6B8-4FE3-B798-0E805F31A4D3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		azure-pipelines.yml = azure-pipelines.yml
+		Directory.Build.props = Directory.Build.props
+		HISTORY.md = HISTORY.md
+		polaris.yml = polaris.yml
+		README.md = README.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PItoADHReadOnly", "PItoADHReadOnly\PItoADHReadOnly.csproj", "{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PItoADHReadOnlyTests", "PItoADHReadOnlyTests\PItoADHReadOnlyTests.csproj", "{5FA6A671-AF22-4192-8384-66A80E4F4295}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B9ED1E-C45B-44C1-AFEE-46D56197E5B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA6A671-AF22-4192-8384-66A80E4F4295}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B86E734-777D-4323-8F5C-478034C730A4}
+	EndGlobalSection
+EndGlobal
