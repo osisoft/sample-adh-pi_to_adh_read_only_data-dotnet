@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -31,7 +31,7 @@ namespace PItoADHReadOnlyTests
             await WriteTestDataAsync().ConfigureAwait(false);
 
             // Run and Assert Program Main Test
-            var result = await Program.MainAsync(true).ConfigureAwait(false);
+            bool result = await Program.MainAsync(true).ConfigureAwait(false);
             Assert.True(result);
 
             // Delete Test Data
@@ -49,26 +49,26 @@ namespace PItoADHReadOnlyTests
 
         private static void CreateSDSServices()
         {
-            var uriResource = new Uri(_appSettings["Resource"]);
+            Uri uriResource = new (_appSettings["Resource"]);
 
-            AuthenticationHandler authenticationHandler = new AuthenticationHandler(uriResource, _appSettings["ClientId"], _appSettings["ClientSecret"]);
-            VerbosityHeaderHandler verbosityHeaderHandler = new VerbosityHeaderHandler();
-            SdsService sdsService = new SdsService(uriResource, formatter: null, HttpCompressionMethod.GZip, authenticationHandler, verbosityHeaderHandler);
+            AuthenticationHandler authenticationHandler = new (uriResource, _appSettings["ClientId"], _appSettings["ClientSecret"]);
+            VerbosityHeaderHandler verbosityHeaderHandler = new ();
+            SdsService sdsService = new (uriResource, formatter: null, HttpCompressionMethod.GZip, authenticationHandler, verbosityHeaderHandler);
 
-            var tenantId = _appSettings["TenantId"];
-            var namespaceId = _appSettings["NamespaceId"];
+            string tenantId = _appSettings["TenantId"];
+            string namespaceId = _appSettings["NamespaceId"];
             _metadataService = sdsService.GetMetadataService(tenantId, namespaceId);
             _dataService = sdsService.GetDataService(tenantId, namespaceId);
         }
 
         private static async Task CreateSDSTypeAndStreamAsync()
         {
-            var typeToCreate = SdsTypeBuilder.CreateSdsType<PItoADHEvent>();
+            SdsType typeToCreate = SdsTypeBuilder.CreateSdsType<PItoADHEvent>();
             typeToCreate.Id = _appSettings["TypeId"];
             _type = await _metadataService.GetOrCreateTypeAsync(typeToCreate).ConfigureAwait(false);
 
-            var streamId = _appSettings["StreamId"];
-            var stream = new SdsStream
+            string streamId = _appSettings["StreamId"];
+            SdsStream stream = new ()
             {
                 Id = streamId,
                 Name = streamId,
@@ -82,10 +82,10 @@ namespace PItoADHReadOnlyTests
         {
             // Create events with different values and flags
             // Spacing out the timestamps by 1 sec
-            var timestamp = DateTime.UtcNow;
-            var rand = new Random();
+            DateTime timestamp = DateTime.UtcNow;
+            Random rand = new ();
 
-            var values = new List<PItoADHEvent>()
+            List<PItoADHEvent> values = new ()
             {
                 new PItoADHEvent()
                 {

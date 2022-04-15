@@ -23,7 +23,7 @@ namespace PItoADHReadOnly
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new ();
 
             sb.Append($"Timestamp: {Timestamp}, ");
 
