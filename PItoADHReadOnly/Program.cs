@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -69,7 +69,7 @@ namespace PItoADHReadOnly
                 Console.WriteLine($"Found stream: {stream.Id}");
 
                 Console.WriteLine("Step 3. Retrieve Window events");
-                System.Collections.Generic.IEnumerable<PItoADHEvent> windowEvents = await dataService.GetWindowValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex).ConfigureAwait(false);
+                IEnumerable<PItoADHEvent> windowEvents = await dataService.GetWindowValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {windowEvents.Count()}");
                 foreach (PItoADHEvent value in windowEvents)
                 {
@@ -78,7 +78,7 @@ namespace PItoADHReadOnly
 
                 Console.WriteLine("Step 4. Retrieve Window events in table form");
                 SdsTable windowEventsTable = await tableService.GetWindowValuesAsync(streamId, startIndex, endIndex).ConfigureAwait(false);
-                foreach (System.Collections.Generic.IList<object> value in windowEventsTable.Rows)
+                foreach (IList<object> value in windowEventsTable.Rows)
                 {
                     Console.WriteLine(string.Join(",", value.ToArray()));
                 }
@@ -102,7 +102,7 @@ namespace PItoADHReadOnly
                 while (!string.IsNullOrEmpty(continuationToken));
 
                 Console.WriteLine("Step 6. Retrieve Range events");
-                System.Collections.Generic.IEnumerable<PItoADHEvent> rangeValues = await dataService.GetRangeValuesAsync<PItoADHEvent>(streamId, startIndex, 10).ConfigureAwait(false);
+                IEnumerable<PItoADHEvent> rangeValues = await dataService.GetRangeValuesAsync<PItoADHEvent>(streamId, startIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {rangeValues.Count()}");
                 foreach (PItoADHEvent value in rangeValues)
                 {
@@ -111,7 +111,7 @@ namespace PItoADHReadOnly
 
                 Console.WriteLine("Step 7. Retrieve Interpolated events");
                 Console.WriteLine("Sds can interpolate or extrapolate data at an index location where data does not explicitly exist:");
-                System.Collections.Generic.IEnumerable<PItoADHEvent> interpolatedValues = await dataService.GetValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, 10).ConfigureAwait(false);
+                IEnumerable<PItoADHEvent> interpolatedValues = await dataService.GetValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, 10).ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {interpolatedValues.Count()}");
                 foreach (PItoADHEvent value in interpolatedValues)
                 {
@@ -120,7 +120,7 @@ namespace PItoADHReadOnly
 
                 Console.WriteLine("Step 8. Retrieve Filtered events");
                 Console.WriteLine($"To show the filter functionality, we will use the less than operator to show values less than 0. (This value can be replaced in the filter statement below to better fit the data set)");
-                System.Collections.Generic.IEnumerable<PItoADHEvent> filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
+                IEnumerable<PItoADHEvent> filteredValues = await dataService.GetWindowFilteredValuesAsync<PItoADHEvent>(streamId, startIndex, endIndex, SdsBoundaryType.Exact, $"Value lt 0").ConfigureAwait(false);
                 Console.WriteLine($"Total events found: {filteredValues.Count()}");
                 foreach (PItoADHEvent value in filteredValues)
                 {
