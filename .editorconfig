@@ -1090,3 +1090,10 @@ csharp_style_namespace_declarations = block_scoped:silent
 csharp_style_expression_bodied_lambdas = true:silent
 csharp_style_expression_bodied_local_functions = false:silent
 dotnet_diagnostic.SA1412.severity = silent
+
+[*.cs]
+# var preferences
+# demonstration code should use explicit types for improved readability
+csharp_style_var_for_built_in_types = false:silent
+csharp_style_var_when_type_is_apparent = false:suggestion
+csharp_style_var_elsewhere = false:silent 
