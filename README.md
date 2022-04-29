@@ -3,7 +3,7 @@
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
 | -----------------------------------------------------------------------------------------------|  
 
-**Version:** 1.0.1
+**Version:** 1.1.0
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-pi-to-adh-read-only-data-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=4507&branchName=main)
 
@@ -14,7 +14,7 @@ The sample described in this section makes use of the AVEVA Data Hub Client Libr
 
 [SDS documentation](https://ocs-docs.osisoft.com/Content_Portal/Documentation/SequentialDataStore/Data_Store_and_SDS.html)
 
-Developed against DotNet 5.0.
+Developed against DotNet 6.0.
 
 ## Getting Started
 
@@ -188,7 +188,7 @@ Note that there are more methods provided in the SdsClient than are discussed in
 
 ---
 
-Automated test uses DotNet 5.0
+Automated test uses DotNet 6.0
 
 `Note: Testing the sample by running the test.py module requires a Client with access to Create and Delete SDS Types and Streams`
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using OSIsoft.Data;
 
@@ -23,25 +24,26 @@ namespace PItoADHReadOnly
 
         public override string ToString()
         {
+            CultureInfo cultureInfo = CultureInfo.InvariantCulture;
             StringBuilder sb = new ();
 
-            sb.Append($"Timestamp: {Timestamp}, ");
+            sb.Append(cultureInfo, $"Timestamp: {Timestamp}, ");
 
             if (Value is not null)
             {
-                sb.Append($"Value: {Value}, ");
+                sb.Append(cultureInfo, $"Value: {Value}, ");
             }
 
-            sb.Append($"IsQuestionable: {IsQuestionable}, ");
-            sb.Append($"IsSubstituted: {IsSubstituted}, ");
-            sb.Append($"IsAnnotated: {IsAnnotated}");
+            sb.Append(cultureInfo, $"IsQuestionable: {IsQuestionable}, ");
+            sb.Append(cultureInfo, $"IsSubstituted: {IsSubstituted}, ");
+            sb.Append(cultureInfo, $"IsAnnotated: {IsAnnotated}");
 
             // In case Value is null, the event will specify a SystemStateCode
             // integer with DigitalStateName as its string representation
             if (SystemStateCode is not null)
             {
-                sb.Append($", SystemStateCode: {SystemStateCode}, ");
-                sb.Append($"DigitalStateName: {DigitalStateName}");
+                sb.Append(cultureInfo, $", SystemStateCode: {SystemStateCode}, ");
+                sb.Append(cultureInfo, $"DigitalStateName: {DigitalStateName}");
             }
 
             return sb.ToString();
