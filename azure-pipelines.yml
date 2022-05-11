@@ -19,6 +19,11 @@ schedules:
 
 resources:
   repositories:
+  builds:
+    - repository: OpsGuildAutomationRepo
+      type: git
+      name: Engineering/OpsGuild.Automation
+      ref: refs/heads/main
     - repository: templates
       type: github
       name: osisoft/OSI-Samples
