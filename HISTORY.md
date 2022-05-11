@@ -3,6 +3,7 @@
 ## 1.1.1 / 2022-05-10
 
 - Updated dependencies
+- Change analysis pipeline to use internal template
 
 ## 1.1.0 / 2022-04-29
 
