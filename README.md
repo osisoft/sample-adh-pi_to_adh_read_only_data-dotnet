@@ -1,6 +1,6 @@
 # Reading PI to ADH Values from Sequential Data Store .Net Sample
 
-**Version:** 1.1.4
+**Version:** 1.1.5
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-pi-to-adh-read-only-data-dotnet?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=4507&branchName=main)
 
