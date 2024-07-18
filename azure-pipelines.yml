@@ -43,7 +43,7 @@ jobs:
   - job: Tests
     condition: ne(variables['Build.Reason'], 'Schedule')
     strategy:
-      maxParallel: 1 # Avoid conflicts in ADH
+      maxParallel: 1 # Avoid conflicts in Cds
       matrix:
         linux:
           agentOS: Linux
